@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI';
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #2c3e50;
+    padding-top: 20px;
+    position: fixed;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+}
+
+/* MAIN CONTENT */
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    width: 100%;
+    background: linear-gradient(to right, #43e97b, #38f9d7);
+    min-height: 100vh;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+</style>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/users">Users</a>
+    <a href="/items_page">Items</a>
+    <a href="/bids">Bids</a>
+    <a href="/categories">Categories</a>
+    <a href="/watchlist">Watchlist</a>
+    <a href="/auctions">Auctions</a>
+    <a href="/payments">Payments</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h2>Dashboard</h2>
+
+<div class="card">Users: {{ users }}</div>
+<div class="card">Items: {{ items }}</div>
+<div class="card">Bids: {{ bids }}</div>
+
+<canvas id="chart"></canvas>
+
+<script>
+new Chart(document.getElementById("chart"), {
+    type: 'bar',
+    data: {
+        labels: ['Users','Items','Bids'],
+        datasets: [{
+            data: [{{ users }}, {{ items }}, {{ bids }}]
+        }]
+    }
+});
+</script>
+
+</div>
+
+</body>
+</html>

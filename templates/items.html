@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Items</title>
+
+<style>
+body { margin:0; font-family:'Segoe UI'; display:flex; }
+
+.sidebar {
+    width:220px;
+    height:100vh;
+    background:#2c3e50;
+    position:fixed;
+}
+.sidebar a {
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+}
+.sidebar a:hover { background:#34495e; }
+
+.content {
+    margin-left:220px;
+    padding:20px;
+    width:100%;
+}
+
+table { width:100%; border-collapse:collapse; }
+td, th { border:1px solid #ddd; padding:10px; }
+
+input, button { padding:6px; margin:3px; }
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/items_page">Items</a>
+    <a href="/bids">Bids</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+
+<h2>Items</h2>
+
+<!-- ADD ITEM -->
+<h3>Add Item</h3>
+<form action="/add_item" method="POST">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="number" name="price" placeholder="Price" required>
+    <button type="submit">Add</button>
+</form>
+
+<!-- TABLE -->
+<table>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Price</th>
+<th>Bid</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[3] }}</td>
+
+<td>
+<form action="/bid/{{ row[0] }}" method="POST">
+    <input type="number" name="amount" placeholder="Bid" required>
+    <button type="submit">Bid</button>
+</form>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

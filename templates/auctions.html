@@ -1,0 +1,119 @@
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #4facfe;
+    color: white;
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background: #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a:hover {
+    background: black;
+}
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Auctions</title>
+
+<form action="/add_auction" method="POST">
+    <input type="number" name="item_id" placeholder="Item ID" required>
+    <input type="datetime-local" name="start_time" required>
+    <input type="datetime-local" name="end_time" required>
+    <button type="submit">Add Auction</button>
+</form>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+}
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+th {
+    background: #4facfe;
+    color: white;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h2>Auctions</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Item ID</th>
+<th>Start Time</th>
+<th>End Time</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/items">Back</a>
+</div>
+
+</body>
+</html>

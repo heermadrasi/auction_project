@@ -1,0 +1,119 @@
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #4facfe;
+    color: white;
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+    background: #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a:hover {
+    background: black;
+}
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payments</title>
+
+<form action="/add_payment" method="POST">
+    <input type="number" name="user_id" placeholder="User ID" required>
+    <input type="number" name="item_id" placeholder="Item ID" required>
+    <input type="number" name="amount" placeholder="Amount" required>
+    <button type="submit">Add Payment</button>
+</form>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+}
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+th {
+    background: #8e44ad;
+    color: white;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h2>Payments</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>User ID</th>
+<th>Item ID</th>
+<th>Amount</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/items">Back</a>
+</div>
+
+</body>
+</html>

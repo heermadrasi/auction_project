@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Users</title>
+
+<style>
+body { margin:0; font-family:'Segoe UI'; display:flex; }
+
+.sidebar {
+    width:220px;
+    height:100vh;
+    background:#2c3e50;
+    position:fixed;
+}
+.sidebar a {
+    display:block;
+    padding:15px;
+    color:white;
+}
+
+.content {
+    margin-left:220px;
+    padding:20px;
+    width:100%;
+}
+
+table { width:100%; border-collapse:collapse; }
+td, th { border:1px solid #ddd; padding:10px; }
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/users">Users</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="content">
+<h2>Users</h2>
+
+<table>
+<tr>
+<th>ID</th><th>Name</th><th>Email</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+</body>
+</html>
